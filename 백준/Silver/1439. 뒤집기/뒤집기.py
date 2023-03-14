@@ -1,30 +1,22 @@
 import sys
 
-data = sys.stdin.readline().rstrip()
+s = list(sys.stdin.readline().rstrip())
+s = list(map(int, s))
 
-zero_arr = []
-one_arr = []
+zero_result = 0
+one_result = 0
 
-result = 0
-count = 1
-
-for i in range(len(data)-1):
-  if data[i] != data[i + 1]:
-    if data[i] == '0':
-      zero_arr.append(count)
-    else:
-      one_arr.append(count)
-    count = 1
+for i in range(len(s) - 1):
+  if s[i] == 1:
+    if s[i + 1] != 1:
+      one_result += 1
   else:
-    count += 1
+    if s[i + 1] != 0:
+      zero_result += 1
 
-if data[len(data)-1] == '0':
-  zero_arr.append(count)
+if s[-1] == 0:
+  zero_result += 1
 else:
-  one_arr.append(count)
+  one_result += 1
 
-if len(zero_arr) > len(one_arr):
-  result = len(one_arr)
-else:
-  result = len(zero_arr)
-print(result)
+print(min(one_result, zero_result))
