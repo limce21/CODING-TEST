@@ -1,31 +1,39 @@
 import sys
 
-data = sys.stdin.readline().rstrip().split('.')
+data = list(sys.stdin.readline().rstrip())
 
-result = ""
-arr = []
-
+count = 0
+result = []
 for i in data:
-  if i == '':
-    arr.append('')
-    continue
-  if len(i) % 2 == 1:
-    result = -1
-    break
-  n = len(i)
-  s = ""
-  while n > 0:
-    if n >= 4:
-      val = n // 4
-      n %= 4
-      s += ('AAAA' * val)
+  if i == 'X':
+    count += 1
+    if count == 2:
+      result.append('BB')
+      count = 0
+      continue
+  if i == '.':
+    if count % 2 == 1:
+      result = -1
+      break
     else:
-      val = n // 2
-      n %= 2
-      s += ('BB'*val)
-  arr.append(s)
+      result.append('.')
 
-if result == -1:
-  print(result)
+if result == -1 or len(''.join(result)) != len(data):
+  print(-1)
 else:
-  print(('.').join(arr))
+  count = 0
+  answer = []
+  for i in range(len(result)):
+    if result[i] == '.':
+      count = 0
+      answer.append('.')
+    else:
+      count += 1
+      if count == 2:
+        answer.append('AAAA')
+        count = 0
+      if (count == 1 and i == len(result) - 1) or (count == 1
+                                                   and result[i + 1] == '.'):
+        answer.append('BB')
+        count = 0
+  print(''.join(answer))
