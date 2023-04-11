@@ -1,47 +1,45 @@
 import sys
 
-keyboard = {
-  'a': (1, 0, 'l'),
-  'b': (2, 4, 'r'),
-  'c': (2, 2, 'l'),
-  'd': (1, 2, 'l'),
-  'e': (0, 2, 'l'),
-  'f': (1, 3, 'l'),
-  'g': (1, 4, 'l'),
-  'h': (1, 5, 'r'),
-  'i': (0, 7, 'r'),
-  'j': (1, 6, 'r'),
-  'k': (1, 7, 'r'),
-  'l': (1, 8, 'r'),
-  'm': (2, 6, 'r'),
-  'n': (2, 5, 'r'),
-  'o': (0, 8, 'r'),
-  'p': (0, 9, 'r'),
-  'q': (0, 0, 'l'),
-  'r': (0, 3, 'l'),
-  's': (1, 1, 'l'),
-  't': (0, 4, 'l'),
-  'u': (0, 6, 'r'),
-  'v': (2, 3, 'l'),
-  'w': (0, 1, 'l'),
-  'x': (2, 1, 'l'),
-  'y': (0, 5, 'r'),
-  'z': (2, 0, 'l')
+sl, sr = sys.stdin.readline().rstrip().split()
+data = list(sys.stdin.readline().rstrip())
+which_hand = {
+  'q':('l',0,0),
+  'w':('l',0,1),
+  'e':('l',0,2),
+  'r':('l',0,3),
+  't':('l',0,4),
+  'a':('l',1,0),
+  's':('l',1,1),
+  'd':('l',1,2),
+  'f':('l',1,3),
+  'g':('l',1,4),
+  'z':('l',2,0),
+  'x':('l',2,1),
+  'c':('l',2,2),
+  'v':('l',2,3),
+  'y':('r',0,5),
+  'u':('r',0,6),
+  'i':('r',0,7),
+  'o':('r',0,8),
+  'p':('r',0,9),
+  'h':('r',1,5),
+  'j':('r',1,6),
+  'k':('r',1,7),
+  'l':('r',1,8),
+  'b':('r',2,4),
+  'n':('r',2,5),
+  'm':('r',2,6),
 }
 
-sl, sr = sys.stdin.readline().rstrip().split()
-word = list(sys.stdin.readline().rstrip())
-result = 0
-for i in word:
-  i_info = keyboard[i]
-  if i_info[2] == 'l':
-    result += abs(i_info[0] - keyboard[sl][0]) + abs(i_info[1] -
-                                                     keyboard[sl][1])
-    sl = i
-  elif i_info[2] == 'r':
-    result += abs(i_info[0] - keyboard[sr][0]) + abs(i_info[1] -
-                                                     keyboard[sr][1])
-    sr = i
-  result += 1
+cnt = 0
+for alpha in data:
+  if which_hand[alpha][0] == 'l':
+    cnt += abs(which_hand[alpha][1] - which_hand[sl][1]) + abs(which_hand[alpha][2] - which_hand[sl][2])
+    cnt += 1
+    sl = alpha
+  else:
+    cnt += abs(which_hand[alpha][1] - which_hand[sr][1]) + abs(which_hand[alpha][2] - which_hand[sr][2])
+    cnt += 1
+    sr = alpha
 
-print(result)
+print(cnt)

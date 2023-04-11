@@ -8,7 +8,7 @@
 
 ### 분류
 
-구현(implementation), 시뮬레이션(simulation)
+구현, 시뮬레이션
 
 ### 문제 설명
 
