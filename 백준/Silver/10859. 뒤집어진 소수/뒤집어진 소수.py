@@ -3,13 +3,16 @@ import sys
 
 
 def isPrime(n):
-  if n == 1:
-    return False
-  else:
-    for i in range(2, int(math.sqrt(n)) + 1):
-      if n % i == 0:
-        return False
+  if n==2:
     return True
+  if n<2 or n%2==0:
+    return False
+  m= int(n**0.5)+1
+  for i in range(3,m,2):
+    if n%i == 0:
+      return False
+    i+=2
+  return True
 
 
 n = sys.stdin.readline().rstrip()
