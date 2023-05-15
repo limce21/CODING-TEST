@@ -3,43 +3,35 @@ import sys
 input = sys.stdin.readline
 
 
-def zero_one(value):
-  if value == 0:
-    return 1
-  else:
+def switch_light(num):
+  if num == 1:
     return 0
-
-
-switch_n = int(input())
-switches = list(map(int, input().split()))
-
-student_n = int(input())
-students = []
-
-for i in range(student_n):
-  students.append((map(int, input().split())))
-
-for student in students:
-  sex, num = student
-  if sex == 1:
-    for i in range(1, switch_n // num + 1):
-      switches[i * num - 1] = zero_one(switches[i * num - 1])
   else:
-    switches[num - 1] = zero_one(switches[num - 1])
-    for i in range(1, num):
-      if num - 1 - i >= 0 and num - 1 + i < switch_n and switches[
-          num - 1 - i] == switches[num - 1 + i]:
-        switches[num - 1 - i] = zero_one(switches[num - 1 - i])
-        switches[num - 1 + i] = zero_one(switches[num - 1 + i])
+    return 1
+
+
+switch_num = int(input())
+switch_list = list(map(int, input().split()))
+student_num = int(input())
+
+for _ in range(student_num):
+  sex, num = map(int, input().split())
+  if sex == 1:
+    for i in range(switch_num // num):
+      index = num + i * num - 1
+      switch_list[index] = switch_light(switch_list[index])
+  else:
+    switch_list[num - 1] = switch_light(switch_list[num - 1])
+    index = 1
+    while num - 1 - index >= 0 and num - 1 + index < switch_num:
+      if switch_list[num - 1 - index] == switch_list[num - 1 + index]:
+        switch_list[num - 1 - index] = switch_light(switch_list[num - 1 -
+                                                                index])
+        switch_list[num - 1 + index] = switch_list[num - 1 - index]
+        index += 1
       else:
         break
 
-if switch_n >= 20:
-  for i in range((switch_n - 1) // 20 + 1):
-    if switch_n > 20 * (i + 1):
-      slice_list = switches[i * 20:(i + 1) * 20]
-    else:
-      slice_list = switches[i * 20:]
-    print(' '.join(map(str, slice_list)))
-else:
-  print(' '.join(map(str, switches)))
+result = [switch_list[i:i + 20] for i in range(0, switch_num, 20)]
+for i in result:
+  print(*i)
