@@ -1,25 +1,29 @@
 import sys
+from itertools import chain
+from collections import Counter
 
 input = sys.stdin.readline
-
 n, m, b = map(int, input().split())
-graph = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
 
-height = 0
-answer = sys.maxsize
+ground = []
+for _ in range(n):
+  ground.append(list(map(int, input().split())))
+
+counter = list(Counter(list(chain(*ground))).items())
+
+min_cost = int(1e9)
 for floor in range(257):
-  max_target, min_target = 0, 0
+  del_cost, isrt_cost = 0, 0
+  for i in counter:
+    target, num = i
+    if target >= floor:
+      del_cost += (target-floor) * num
+    else:
+      isrt_cost += (floor-target) * num
+  if del_cost + b >= isrt_cost:
+    if del_cost * 2 + isrt_cost <= min_cost:
+      min_cost = del_cost * 2 + isrt_cost
+      answer = (min_cost, floor)
 
-  for i in range(n):
-    for j in range(m):
-      if graph[i][j] >= floor:
-        max_target += graph[i][j] - floor
-      else:
-        min_target += floor - graph[i][j]
-
-  if max_target + b >= min_target:
-    if min_target + 2 * max_target <= answer:
-      answer = min_target + 2 * max_target
-      height = floor
-
-print(answer, height)
+print(*answer)
+    
