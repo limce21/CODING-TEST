@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 31788 KB, 시간: 164 ms
+메모리: 31704 KB, 시간: 164 ms
 
 ### 분류
 
@@ -18,7 +18,7 @@
 
 <p style="text-align: justify;">다음과 같이 3x3 크기의 복도의 정보가 주어진 상황을 확인해보자. 본 문제에서 위치 값을 나타낼 때는 (행,열)의 형태로 표현한다. 선생님이 존재하는 칸은 T, 학생이 존재하는 칸은 S, 장애물이 존재하는 칸은 O로 표시하였다. 아래 그림과 같이 (3,1)의 위치에는 선생님이 존재하며 (1,1), (2,1), (3,3)의 위치에는 학생이 존재한다. 그리고 (1,2), (2,2), (3,2)의 위치에는 장애물이 존재한다. </p>
 
-<p style="text-align: center;"><img alt="" src="" style="height: 179px; width: 200px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/c513ebb1-7a89-42c1-8d69-63b66b5d7dca/-/preview/" style="height: 179px; width: 200px;"></p>
 
 <p>이 때 (3,3)의 위치에 존재하는 학생은 장애물 뒤편에 숨어 있기 때문에 감시를 피할 수 있다. 하지만 (1,1)과 (2,1)의 위치에 존재하는 학생은 선생님에게 들키게 된다.</p>
 
@@ -26,11 +26,11 @@
 
 <p>예를 들어 <em>N</em>=5일 때, 다음과 같이 선생님 및 학생의 위치 정보가 주어졌다고 가정하자.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="height: 300px; width: 340px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/1c939daa-993c-43e7-8cdc-579d65bef994/-/preview/" style="height: 300px; width: 340px;"></p>
 
 <p>이 때 다음과 같이 3개의 장애물을 설치하면, 모든 학생들을 선생님의 감시로부터 피하도록 만들 수 있다.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="height: 300px; width: 340px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/c752987a-3b50-4d94-8a8a-932d0e65dffe/-/preview/" style="height: 300px; width: 340px;"></p>
 
 ### 입력 
 

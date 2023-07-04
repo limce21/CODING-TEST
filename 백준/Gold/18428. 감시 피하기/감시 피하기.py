@@ -6,6 +6,7 @@ sys.setrecursionlimit(1000000)
 dx = [0, 0, -1, 1]
 dy = [-1, 1, 0, 0]
 
+
 def dfs(x, y, tmp):
   for i in range(4):
     nx = x
@@ -19,6 +20,7 @@ def dfs(x, y, tmp):
         break
       if tmp[nx][ny] == 'S':
         tmp[nx][ny] = 'X'
+
 
 n = int(sys.stdin.readline())
 
@@ -46,23 +48,11 @@ for c in combs:
     i, j = idx
     tmp[i][j] = 'O'
 
-  if tmp == [['X', 'S', 'X', 'O', 'T'], ['T', 'O', 'S', 'X', 'X'], ['X', 'X', 'O', 'X', 'X'], ['X', 'T', 'X', 'X', 'X'], ['X', 'X', 'T', 'X', 'X']]:
-    for i in tmp:
-      print(i)
-    print()
-    for i in range(n):
-      for j in range(n):
-        if tmp[i][j] == 'T':
-          dfs(i, j, tmp)
-    for i in tmp:
-      print(i)
-    print()
-  else:
-    for i in range(n):
-      for j in range(n):
-        if tmp[i][j] == 'T':
-          dfs(i, j, tmp)
-        
+  for i in range(n):
+    for j in range(n):
+      if tmp[i][j] == 'T':
+        dfs(i, j, tmp)
+
   for k in range(n):
     cnt += tmp[k].count('S')
 
@@ -71,5 +61,3 @@ for c in combs:
     break
 
 print(answer)
-
-
