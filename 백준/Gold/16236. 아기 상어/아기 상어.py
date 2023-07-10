@@ -1,6 +1,5 @@
 import sys
 from collections import deque
-import copy
 
 input = sys.stdin.readline
 shark_size = 2
@@ -27,7 +26,6 @@ def bfs(x, y, px, py):
   queue = deque([])
   queue.append([x, y])
   tmp = [[0] * n for _ in range(n)]
-  
 
   while queue:
     vx, vy = queue.popleft()
