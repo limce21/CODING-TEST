@@ -1,26 +1,24 @@
+import heapq
 import sys
 
-n = int(sys.stdin.readline().rstrip())
+input = sys.stdin.readline
 
-insert_data = []
-result = 1
-
+n = int(input())
+data = []
 for _ in range(n):
-  s, t = map(int, sys.stdin.readline().rstrip().split())
-  insert_data.append((s, t))
+  data.append(list(map(int, input().split())))
 
-insert_data.sort(key=lambda x: (x[0], -(x[0] - x[1])))
+heap = []
+data.sort(key=lambda x: (x[0], x[1]))
+heapq.heappush(heap, data[0][1])
 
-end_time = [insert_data[0][1]]
 for i in range(1, n):
-  x, y = insert_data[i]
-  flag = -1
-  for j in range(len(end_time)):
-    if x >= end_time[j]:
-      end_time[j] = y
-      flag = j
-      break
-  if flag == -1:
-    end_time.append(y)
+  s, e = data[i]
+  he = heapq.heappop(heap)
+  if s >= he:
+    heapq.heappush(heap, e)
+  else:
+    heapq.heappush(heap, he)
+    heapq.heappush(heap, e)
 
-print(len(end_time))
+print(len(heap))
