@@ -1,17 +1,20 @@
 import sys
 
-n, m = map(int, sys.stdin.readline().rstrip().split())
-data = list(map(int, sys.stdin.readline().rstrip().split()))
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+data = list(map(int, input().split()))
+
 end = 0
-count = 0
 interval_sum = 0
+answer = 0
 
 for start in range(n):
-  while end < n and interval_sum < m:
+  while interval_sum < m and end < n:
     interval_sum += data[end]
     end += 1
   if interval_sum == m:
-    count += 1
+    answer += 1
   interval_sum -= data[start]
 
-print(count)
+print(answer)
