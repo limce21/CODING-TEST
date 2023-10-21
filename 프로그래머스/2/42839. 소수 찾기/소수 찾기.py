@@ -3,16 +3,14 @@ number_set = set()
 n = 0
 
 def make(numbers, idx, string, visited):
+    if string != '':
+        number_set.add(int(string))
     if idx == n:
-        if string != '':
-            number_set.add(int(string))
         return
     for i in range(len(numbers)):
         if not visited[i]:
             visited[i] = True
-            make(numbers, idx+1, string, visited)
             make(numbers, idx+1, string+numbers[i], visited)
-            make(numbers, idx+1, numbers[i]+string, visited)
             visited[i] = False;
 
 def solution(numbers):
