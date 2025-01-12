@@ -47,7 +47,6 @@ public class Main {
         if (nx == k) {
           if (dist[nx] == -1) {
             dist[nx] = dist[cx] + 1;
-            queue.offer(nx);
             continue;
           } else {
             if (dist[cx] + 1 <= result1) {
