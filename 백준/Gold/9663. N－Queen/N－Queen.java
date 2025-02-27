@@ -4,9 +4,9 @@ import java.util.*;
 public class Main {
   static int n;
   static int result = 0;
-  static boolean[] isUsed1 = new boolean[40];
-  static boolean[] isUsed2 = new boolean[40];
-  static boolean[] isUsed3 = new boolean[40];
+  static boolean[] isUsed1 = new boolean[30];
+  static boolean[] isUsed2 = new boolean[30];
+  static boolean[] isUsed3 = new boolean[30];
 
   static void func(int k) {
     if (k == n) {
