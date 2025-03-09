@@ -13,6 +13,7 @@ public class Main {
       if (x == first) {
         result = Math.min(result, cost);
       }
+      return;
     }
     for (int i = 0; i < n; i++) {
       if (!visited[i] && w[x][i] != 0) {
