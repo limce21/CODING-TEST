@@ -1,8 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-import javax.naming.LinkException;
-
 public class Main {
   static int n;
   static int m;
@@ -98,5 +96,3 @@ public class Main {
     System.out.println(result);
   }
 }
-
-
